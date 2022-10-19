@@ -1,5 +1,4 @@
 import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class FileRecord {
