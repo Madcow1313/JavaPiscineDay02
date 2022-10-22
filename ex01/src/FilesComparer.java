@@ -27,6 +27,8 @@ public class FilesComparer {
             denominatorA += firstNumber * firstNumber;
             denominatorB += secondNumber * secondNumber;
         }
+        if (numerator == 0 || denominatorA == 0 || denominatorB == 0)
+            return 0;
         similarity = numerator / (roundToTwoDigits(Math.sqrt((double) denominatorA) *
                     Math.sqrt((double) denominatorB)));
         return similarity;

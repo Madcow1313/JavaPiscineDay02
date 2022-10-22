@@ -33,16 +33,13 @@ public class MyFileReader {
                         fileContent.put(str, 1);
                     }
                 }
-
             }
+            reader.close();
         }
         catch (Exception e){
             System.out.println("File not found");
+            System.exit(-1);
         }
-    }
-
-    public void deleteCopies(){
-
     }
 
     public HashMap<String, Integer> getFileContent() {
