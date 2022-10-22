@@ -36,9 +36,14 @@ public class Program {
             System.err.println("One argument expected, no more, no less");
             System.exit(-1);
         }
-
+        String path = args[0];
+        if (!path.startsWith("--current_folder=")){
+            System.err.println("Wrong input");
+            System.exit(-1);
+        }
+        path = path.substring(path.indexOf("=") + 1);
         try{
-            DirectoryManagement directoryManagement = new DirectoryManagement(args[0]);
+            DirectoryManagement directoryManagement = new DirectoryManagement(path);
             Scanner scanner = new Scanner(System.in);
             String input;
             String[] temp;
