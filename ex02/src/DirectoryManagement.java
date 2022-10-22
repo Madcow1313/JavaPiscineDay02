@@ -29,7 +29,7 @@ public class DirectoryManagement {
         }
         directory = new File(currentDirectory.toString());
         if (!directory.isDirectory() || !displayDirectory()){
-            System.err.println("cd error: can't change directory to " + currentDirectory.toString());
+            System.err.println("Can't change directory to " + currentDirectory.toString());
             setCurrentDirectory(temp.toString());
         }
     }
@@ -99,7 +99,9 @@ public class DirectoryManagement {
         Path path = currentDirectory.resolve(where).normalize();
         Path filePath = currentDirectory.resolve(what).normalize();
         File file = new File(filePath.toString());
+        File fileToRename = new File(path.toString());
         if (file.exists()){
+            if (!fileToRename.exists()){
                 try{
                     Files.move(filePath, path, StandardCopyOption.ATOMIC_MOVE);
                 }
@@ -107,6 +109,10 @@ public class DirectoryManagement {
                     System.err.println("IO error");
                 }
             }
+            else{
+                System.err.println("Can't move or rename file because " + fileToRename.getName() + " already exists");
+            }
+        }
         else{
             System.err.println("No file to move or rename");
         }

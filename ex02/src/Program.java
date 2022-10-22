@@ -11,14 +11,14 @@ public class Program {
                 break;
             case "cd":
                 if (arg.length > 2) {
-                    System.err.println("cd error: too many arguments");
+                    System.err.println("Too many arguments, one expected");
                 } else {
                     directoryManagement.setCurrentDirectory(arg[1]);
                 }
                 break;
             case "mv":
                 if (arg.length != 3) {
-                    System.err.println("mv error: wrong number of arguments, two expected");
+                    System.err.println("Wrong number of arguments, two expected");
                 } else {
                     directoryManagement.moveOrRename(arg[1], arg[2]);
                 }
