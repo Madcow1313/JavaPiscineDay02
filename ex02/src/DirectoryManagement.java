@@ -74,7 +74,6 @@ public class DirectoryManagement {
             System.err.println("No such directory");
             return;
         }
-        System.out.println(currentDirectory.toAbsolutePath().normalize().toString());
         directory = new File(currentDirectory.toAbsolutePath().normalize().toString());
         File[] contentsOfDirectory = directory.listFiles();
         long size;
