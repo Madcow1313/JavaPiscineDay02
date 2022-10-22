@@ -20,7 +20,7 @@ public class Program {
                 if (arg.length != 3) {
                     System.err.println("mv error: wrong number of arguments, two expected");
                 } else {
-                    System.out.println("shit");
+                    directoryManagement.moveOrRename(arg[1], arg[2]);
                 }
                 break;
             case "exit":
@@ -37,18 +37,26 @@ public class Program {
             System.exit(-1);
         }
 
-        DirectoryManagement directoryManagement = new DirectoryManagement(args[0]);
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        String[] temp;
+        try{
+            DirectoryManagement directoryManagement = new DirectoryManagement(args[0]);
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            String[] temp;
 
-        while (true){
-            input = scanner.nextLine();
-            temp = input.split("\\s");
-            input = temp[0];
+            directoryManagement.displayDirectory();
+            while (true){
+                input = scanner.nextLine();
+                temp = input.split("\\s");
+                input = temp[0];
 
-            manageOperations(input, temp, directoryManagement);
+                manageOperations(input, temp, directoryManagement);
+            }
         }
+        catch (IllegalArgumentException e){
+            System.err.println("Path is not absolute");
+            System.exit(-1);
+        }
+
 
     }
 }
