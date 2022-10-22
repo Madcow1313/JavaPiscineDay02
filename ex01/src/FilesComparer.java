@@ -21,23 +21,18 @@ public class FilesComparer {
         int secondNumber;
 
         for (String str: dictionary){
-            if (firstFileContent.containsKey(str)){
-                firstNumber = firstFileContent.get(str);
-            }
-            else{
-                firstNumber = 0;
-            }
-            if (secondFileContent.containsKey(str)){
-                secondNumber =secondFileContent.get(str);
-            }
-            else{
-                secondNumber = 0;
-            }
+            firstNumber = firstFileContent.getOrDefault(str, 0);
+            secondNumber = secondFileContent.getOrDefault(str, 0);
             numerator += firstNumber * secondNumber;
             denominatorA += firstNumber * firstNumber;
             denominatorB += secondNumber * secondNumber;
         }
-        similarity = numerator / (Math.sqrt((double) denominatorA) * Math.sqrt((double) denominatorB));
+        similarity = numerator / (roundToTwoDigits(Math.sqrt((double) denominatorA) *
+                    Math.sqrt((double) denominatorB)));
         return similarity;
+    }
+
+    private double roundToTwoDigits(double number){
+        return Math.round(number * 100) / 100.0;
     }
 }

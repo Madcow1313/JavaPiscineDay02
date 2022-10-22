@@ -14,12 +14,8 @@ public class DictionaryCreator {
 
     public HashSet<String> makeDictionary(){
         dictionary = new HashSet<>();
-        for (String key: firstFileContent.keySet()){
-            dictionary.add(key);
-        }
-        for (String key: secondFileContent.keySet()){
-            dictionary.add(key);
-        }
+        dictionary.addAll(firstFileContent.keySet());
+        dictionary.addAll(secondFileContent.keySet());
         return dictionary;
     }
 
